@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const moment = require('moment')
-const uri = "mongodb://heroku_7b7ldslj:abvvta60el4o01rvld4upmljle@ds135540.mlab.com:35540/heroku_7b7ldslj";
+
 
 
 
