@@ -1,0 +1,81 @@
+<div class="card-columns">
+    <div class="card card-black">
+        <div class="card-body text-center">
+            <p class="card-text"><i class="material-icons">show_chart</i></p>
+        </div>
+        <a class="btn btn-see w-100" href="/songs">Number of songs per year</a>
+    </div>
+
+    <div class="card card-black">
+        <div class="card-body text-center">
+            <p class="card-text"><i class="material-icons">show_chart</i></p>
+        </div>
+        <a class="btn btn-see w-100" href="/songs/2020">Number of songs per month</a>
+    </div>
+
+    <div class="card card-black">
+        <div class="card-body text-center">
+            <p class="card-text"><i class="material-icons">show_chart</i></p>
+        </div>
+        <a class="btn btn-see w-100" href="/songs/attributes">Attributes by year</a>
+    </div>
+    <div class="card card-black">
+        <div class="card-body text-center">
+            <p class="card-text"><i class="material-icons">show_chart</i></p>
+        </div>
+        <a class="btn btn-see w-100" href="/songs/attributes/2020">Attributes by month</a>
+    </div>
+    <div class="card card-black">
+        <div class="card-body text-center">
+            <p class="card-text"><i class="material-icons">show_chart</i></p>
+        </div>
+        <a class="btn btn-see w-100" href="/artists">Attributes by artist</a>
+    </div>
+    <div class="card card-black">
+        <div class="card-body text-center">
+            <p class="card-text"><i class="material-icons">show_chart</i></p>
+        </div>
+        <a class="btn btn-see w-100" href="/lucky">Feeling lucky</a>
+    </div>
+
+</div>
+{{!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script> --}}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<script>
+    $(window).ready(() => {
+        //update();
+    });
+    $(window).resize(() => {
+        // update();
+    });
+
+    function update() {
+        var cards = document.querySelectorAll('.card-black');
+        cards.forEach(card => {
+            matchSize(card);
+        });
+    }
+
+    function matchSize(element) {
+        var boundingBox = element.getBoundingClientRect();
+        var width = boundingBox['width'];
+        element.style.height = "300px";
+    }
+
+</script>

@@ -1,0 +1,30 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/songs/attributes">Attributes per year</a></li>
+        <li class="breadcrumb-item active"><a href="#">{{year}}</a></li>
+    </ol>
+</nav>
+<h3>Attributes per month, {{year}}</h3>
+<div class="row">
+    <div id="chart"></div>
+</div>
+<div class="row">
+    <a class="btn btn-more" href="/songs/attributes/popularity/{{year}}">See top 5
+        popular songs
+        of {{year}}</a>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/javascripts/charts/songs-attributes-month.js"></script>
+
+<script>
+    var year = {{{ year }}};
+    $(window).ready(() => {
+        init();
+        updateChart(year);
+    });
+</script>

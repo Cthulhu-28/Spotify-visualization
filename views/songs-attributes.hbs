@@ -1,0 +1,46 @@
+<h3>Attributes per year</h3>
+
+<div class="row">
+    <div id="chart"></div>
+</div>
+<div class="row">
+    <div id="start" class="col-2" style="text-align: end">1921</div>
+    <div class="col-8">
+        <input id="ex2" type="text" class="span2 w-100" value="" data-slider-min="1921" data-slider-max="2020"
+            data-slider-step="1" data-slider-value="[1921,2020]" data-slider-id="slider-year" />
+    </div>
+    <div id="end" class="col-2">2020</div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/javascripts/charts/songs-attributes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
+<script>
+    var slider;
+    $(window).ready(() => {
+        init();
+        updateChart(1921, 2020);
+
+        slider = $("#ex2").slider({});
+
+        slider.on('slideStop', function (evt) {
+            let values = slider.val();
+            values = values.split(",");
+            $('#start').html(values[0]);
+            $('#end').html(values[1]);
+            updateChart(values[0], values[1]);
+        });
+
+        slider.on('slide', function (evt) {
+            let values = slider.val();
+            values = values.split(",");
+            $('#start').html(values[0]);
+            $('#end').html(values[1]);
+        });
+    });
+
+</script>
