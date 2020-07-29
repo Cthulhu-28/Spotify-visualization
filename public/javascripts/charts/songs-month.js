@@ -38,7 +38,7 @@ function init() {
             curve: 'straight'
         },
         title: {
-            text: 'Number of songs per year',
+            text: 'Number of songs per month',
             align: 'left'
         },
         grid: {

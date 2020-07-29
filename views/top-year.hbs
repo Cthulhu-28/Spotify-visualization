@@ -1,0 +1,12 @@
+<h3>Top 5 popular songs of {{year}}</h3>
+{{#each songs}}
+<div class="row" style="margin: 6px;">
+    <iframe class="song" src="https://open.spotify.com/embed/track/{{this.song}}" width="640" height="80"
+        frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
+{{/each}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>

@@ -41,7 +41,7 @@ function init() {
             width: 2
         },
         title: {
-            text: 'Number of songs per year',
+            text: 'Attributes per year',
             align: 'left'
         },
         grid: {

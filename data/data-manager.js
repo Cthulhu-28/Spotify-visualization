@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const moment = require('moment')
-
+const uri = require('../secret/secret');
 
 
 
@@ -587,6 +587,62 @@ function DataManager() {
                     {
                         "$match": {
                             "month": month
+                        }
+                    },
+                    {
+                        "$sort": {
+                            "attr": -1.0
+                        }
+                    },
+                    {
+                        "$limit": count
+                    }
+                ];
+
+                var cursor = collection.aggregate(pipeline, options);
+                data = [];
+                cursor.forEach(
+                    function(doc) {
+                        data.push(doc);
+                    },
+                    function(err) {
+                        client.close();
+                        callback(err, data);
+                    }
+                );
+            }
+        });
+    }
+
+    this.topSongsOfYear = function(attr, year, count = 5, callback) {
+        const client = new MongoClient(uri, { useNewUrlParser: true });
+        client.connect((err, db) => {
+            if (err) {
+                console.log(err);
+                callback(err, []);
+            } else {
+                let dbo = db.db();
+
+                var collection = dbo.collection("tracks");
+
+                var options = {
+                    allowDiskUse: false
+                };
+
+                var pipeline = [{
+                        "$match": {
+                            "year": year,
+                        }
+                    },
+                    {
+                        "$project": {
+                            "artists": "$artists",
+                            "song": "$id",
+                            "name": "$name",
+                            "attr": `$${attr}`,
+                            "month": {
+                                "$month": "$release_date"
+                            }
                         }
                     },
                     {

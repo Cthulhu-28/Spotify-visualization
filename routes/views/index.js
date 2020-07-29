@@ -20,11 +20,15 @@ const months = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('test', { title: 'Express' });
+    res.render('test', { title: 'Spotify data' });
+});
+
+router.get('/about', function(req, res, next) {
+    res.render('about', { title: 'About' });
 });
 
 router.get('/songs', function(req, res, next) {
-    res.render('songs-year', { title: 'Songs-year' });
+    res.render('songs-year', { title: 'Songs' });
 });
 
 router.get('/songs/:year', function(req, res, next) {
@@ -32,17 +36,17 @@ router.get('/songs/:year', function(req, res, next) {
     if (year == 'attributes') {
         return next();
     }
-    res.render('songs-month', { title: 'Songs-month', year: year });
+    res.render('songs-month', { title: 'Songs', year: year });
 });
 
 router.get('/songs/attributes', function(req, res, next) {
     var year = req.params.year;
-    res.render('songs-attributes', { title: 'Songs-month', year: year });
+    res.render('songs-attributes', { title: 'Songs', year: year });
 });
 
 router.get('/songs/attributes/:year', function(req, res, next) {
     var year = req.params.year;
-    res.render('songs-attributes-month', { title: 'Songs-month', year: year });
+    res.render('songs-attributes-month', { title: 'Songs', year: year });
 });
 
 router.get('/songs/attributes/:attr/:year/:month', function(req, res, next) {
@@ -55,7 +59,7 @@ router.get('/songs/attributes/:attr/:year/:month', function(req, res, next) {
     dm.topSongsAttributes(attr, year, month, 5, (err, data) => {
         console.log('HI 2');
         res.render('songs-top', {
-            title: 'Songs-month',
+            title: 'Songs',
             year: year,
             month: monthName,
             attr: attr,
@@ -69,7 +73,7 @@ router.get('/songs/attributes/:attr/:year/:month', function(req, res, next) {
 router.get('/artists', function(req, res, next) {
     dm.listArtists((err, data) => {
         res.render('artists', {
-            title: 'Songs-year',
+            title: 'Artists',
             data: data
         });
     });
@@ -84,7 +88,7 @@ router.get('/artists/:attr/:artist', function(req, res, next) {
             res.status(400);
         } else {
             res.render('artists-top', {
-                title: 'Songs-year',
+                title: 'Artists',
                 artist: artist,
                 attr: attr,
                 songs: data,
@@ -101,9 +105,27 @@ router.get('/lucky', function(req, res, next) {
             res.status(400);
         } else {
             res.render('random', {
-                title: 'Songs-year',
+                title: ':)',
                 songs: data,
                 count: data.length
+            });
+        }
+    });
+
+});
+
+router.get('/top/:year', function(req, res, next) {
+    let year = req.params.year;
+    year = parseInt(year);
+    dm.topSongsOfYear('popularity', year, 5, (err, data) => {
+        if (err) {
+            res.status(400);
+        } else {
+            res.render('top-year', {
+                title: 'Top 5',
+                songs: data,
+                count: data.length,
+                year: year
             });
         }
     });
